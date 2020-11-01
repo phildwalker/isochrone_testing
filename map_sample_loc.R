@@ -6,17 +6,19 @@ load(file = here::here("data", "loc_sf.rda"))
 
 library(sf)
 library(leaflet)
+library(tidyverse)
 
-plotID <- 1
-
-
-
+plotID <- 19
 
 
 
+# iso_location[iso_location$loc_id %in% plotID, 'max']
 
-
-steps <- sort(as.numeric(iso_location %>% filter(loc_id %in% plotID) %>% pull(max)))
+steps <- sort(iso_location %>%
+                st_drop_geometry() %>% 
+                filter(loc_id %in% plotID) %>% 
+                pull(max)
+              )
 
 iso_location <- cbind(steps = steps[iso_location[['id']]], iso_location)
 
@@ -46,7 +48,7 @@ leaflet() %>%
              ) %>%
   setView(LocPoint$Long, 
           LocPoint$Lat, 
-          zoom = 9)
+          zoom = 11)
 
 
 
