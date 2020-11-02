@@ -54,7 +54,7 @@ iso_location <- dataset
 
 save(iso_location, file = here::here("data", "iso_location.rda"))
  
-st_write(iso_location, here::here("data", "iso_shape","isochrones.shp"))
+st_write(iso_location, here::here("data", "iso_shape","isochrones.shp"), delete_dsn = T)
 
 
 
