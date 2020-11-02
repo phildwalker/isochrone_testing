@@ -29,7 +29,7 @@ for (id in LocLoop){
     print(glue::glue("Isochrones for location id: {id}"))
     iso <- osrmIsochrone(loc = myLoc_sf[id,], 
                          returnclass="sf",
-                         breaks = seq(from = 0, to = 20, by = 5),
+                         breaks = seq(from = 0, to = 16, by = 2),
                          res = 60)
     iso$loc_id = id
     
@@ -41,7 +41,7 @@ for (id in LocLoop){
     print(glue::glue("Isochrones for location id: {id}"))
     iso <- osrmIsochrone(loc = myLoc_sf[id,],
                          returnclass="sf",
-                         breaks = seq(from = 0, to = 20, by = 5),
+                         breaks = seq(from = 0, to = 16, by = 2),
                          res = 60)
     iso$loc_id = id
     
@@ -54,6 +54,7 @@ iso_location <- dataset
 
 save(iso_location, file = here::here("data", "iso_location.rda"))
  
+st_write(iso_location, here::here("data", "iso_shape","isochrones.shp"))
 
 
 

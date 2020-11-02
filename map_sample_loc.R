@@ -11,7 +11,6 @@ library(tidyverse)
 plotID <- 20
 
 
-st_write(iso_location, here::here("data", "iso_shape","isochrones.shp"))
 
 
 # iso_location[iso_location$loc_id %in% plotID, 'max']
