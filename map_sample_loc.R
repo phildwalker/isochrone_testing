@@ -1,6 +1,11 @@
 # Plotting some iso exampes
 # Sun Nov 01 13:05:45 2020 ------------------------------
 
+
+library(sf)
+library(leaflet)
+library(tidyverse)
+
 # load(file = here::here("data", "iso_location.rda"))
 
 iso_location <- 
@@ -9,9 +14,6 @@ iso_location <-
 
 load(file = here::here("data", "loc_sf.rda"))
 
-library(sf)
-library(leaflet)
-library(tidyverse)
 
 plotID <- 20
 
