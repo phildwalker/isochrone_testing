@@ -1,7 +1,12 @@
 # Plotting some iso exampes
 # Sun Nov 01 13:05:45 2020 ------------------------------
 
-load(file = here::here("data", "iso_location.rda"))
+# load(file = here::here("data", "iso_location.rda"))
+
+iso_location <- 
+  st_read(here::here("data", "iso_shape","isochrones.shp")) %>% 
+  st_transform( crs = 4326)
+
 load(file = here::here("data", "loc_sf.rda"))
 
 library(sf)
