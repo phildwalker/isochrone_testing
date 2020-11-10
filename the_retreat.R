@@ -24,13 +24,14 @@ myLoc_sf <-
 
 iso <- osrmIsochrone(loc = c(-79.97304,36.140114),
                      returnclass="sf",
-                     breaks = seq(from = 0, to = 30, by = 1), #c(0, 2,5,10,30),
-                     res = 60)
+                     breaks = seq(from = 0, to = 45, by = 3), #c(0, 2,5,10,30),
+                     res = 50)
 
-iso_drive <- iso
+iso_the_retreat <- iso
 
-save(iso_drive, file = here::here("data", "iso_drive.rda"))
-st_write(iso_drive, here::here("data", "drive_richardson","isochrones_drive_richardson.shp"), delete_dsn = T) #, delete_dsn = T
+save(iso_the_retreat, file = here::here("data", "iso_the_retreat.rda"))
+st_write(iso_the_retreat, here::here("data", "the_retreat","isochrones_drive_the_retreat.shp"), delete_dsn = T) #, delete_dsn = T
+
 
 library(leaflet)
 steps <- sort(as.numeric(iso$max))
@@ -50,4 +51,4 @@ leaflet() %>%
             title = 'Drive Time (min.)',
             opacity = 1) %>%
   addMarkers(loc$long, loc$lat) %>%
-  setView(loc$long, loc$lat, zoom = 9)
+  setView(loc$long, loc$lat, zoom = 10)
