@@ -5,7 +5,8 @@ library(sf)
 library(tidyverse)
 
 locations <- readxl::read_excel(here::here("data", "RTG_Locations.xlsx")) %>% 
-  select(-FIPS) %>% 
+  select(-FIPS) %>%
+  filter(!is.na(Name)) %>% 
   # mutate(id = row_number()) %>% 
   ungroup() %>% 
   rename(id = ID)
