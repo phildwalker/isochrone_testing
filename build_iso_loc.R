@@ -16,7 +16,7 @@ myLoc_sf <-
   locations %>% 
   st_as_sf(coords = c("Long", "Lat"), crs = 4326)
 
-# mapview::mapview(myLoc_sf, zcol = "name")
+# mapview::mapview(myLoc_sf, zcol = "Name")
 
 # id = 5
 # iso <- osrmIsochrone(loc = myLoc_sf[id,], #c(-79.9093467,36.111545)
