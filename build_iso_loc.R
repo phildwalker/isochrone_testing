@@ -30,7 +30,7 @@ for (id in LocLoop){
   # if the merged dataset does exist, append to it
   if (exists("dataset")){
     print(glue::glue("Isochrones for location id: {id}"))
-    iso <- osrmIsochrone(loc = myLoc_sf[id,], 
+    iso <- osrmIsochrone(loc = myLoc_sf[myLoc_sf$id == id,], 
                          returnclass="sf",
                          breaks = seq(from = 0, to = 16, by = 2),
                          res = 60)
@@ -42,7 +42,7 @@ for (id in LocLoop){
   # if the merged dataset doesn't exist, create it
   if (!exists("dataset")){
     print(glue::glue("Isochrones for location id: {id}"))
-    iso <- osrmIsochrone(loc = myLoc_sf[id,],
+    iso <- osrmIsochrone(loc = myLoc_sf[myLoc_sf$id == id,],
                          returnclass="sf",
                          breaks = seq(from = 0, to = 16, by = 2),
                          res = 60)
