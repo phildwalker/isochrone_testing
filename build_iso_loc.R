@@ -6,7 +6,9 @@ library(tidyverse)
 
 locations <- readxl::read_excel(here::here("data", "RTG_Locations.xlsx")) %>% 
   select(-FIPS) %>% 
-  mutate(id = row_number())
+  # mutate(id = row_number()) %>% 
+  ungroup() %>% 
+  rename(id = ID)
 
 
 myLoc_sf <-
@@ -62,7 +64,7 @@ st_write(iso_location, here::here("data", "iso_shape","isochrones.shp"), delete_
 loc_sf <-
   locations %>% 
   left_join(.,myLoc_sf) %>% 
-  st_as_sf
+  st_as_sf()
 
 save(loc_sf, file = here::here("data", "loc_sf.rda"))
 

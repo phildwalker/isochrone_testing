@@ -25,7 +25,7 @@ myLoc_sf <-
 iso <- osrmIsochrone(loc = c(-79.97304,36.140114),
                      returnclass="sf",
                      breaks = seq(from = 0, to = 45, by = 3), #c(0, 2,5,10,30),
-                     res = 50)
+                     res = 70)
 
 iso_the_retreat <- iso
 
