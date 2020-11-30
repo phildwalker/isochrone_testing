@@ -33,3 +33,28 @@ iso_finks <- iso
 
 save(iso_finks, file = here::here("data", "iso_finks.rda"))
 st_write(iso_finks, here::here("data", "finks","isochrones_drive_finks.shp"), delete_dsn = T) #, delete_dsn = T
+
+
+
+
+library(leaflet)
+steps <- sort(as.numeric(iso$max))
+
+iso <- cbind(steps = steps[iso[['id']]], iso)
+pal <- colorFactor(viridis::plasma(nrow(iso), direction = -1), 
+                   iso$steps)
+
+leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(data = iso,
+              weight = 2, 
+              color = ~pal(steps)) %>% 
+  addLegend(data = iso,
+            pal = pal, 
+            values = ~steps,
+            title = 'Drive Time (min.)',
+            opacity = 1) %>%
+  addMarkers(loc$long, loc$lat) %>%
+  setView(loc$long, loc$lat, zoom = 10)
+
+
